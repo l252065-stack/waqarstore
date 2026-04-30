@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ─── Brand Design Tokens ───────────────────────────────────────────── */
+:root {
+  --color-black: #0a0a0a;
+  --color-white: #ffffff;
+  --color-warm-gray: #f5f4f2;
+  --color-gold: #c9a84c;
+  --color-gold-dark: #b8973d;
+
+  --background: var(--color-white);
+  --foreground: var(--color-black);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Extend with brand colors */
+  --color-brand-black: var(--color-black);
+  --color-brand-white: var(--color-white);
+  --color-brand-warm-gray: var(--color-warm-gray);
+  --color-brand-gold: var(--color-gold);
+  --color-brand-gold-dark: var(--color-gold-dark);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, system-ui, sans-serif);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar (webkit) ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-warm-gray);
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* ─── Focus visible ──────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ─── Hide scrollbar utility ─────────────────────────────────────────── */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
